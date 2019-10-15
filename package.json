@@ -9,7 +9,10 @@
     "entando-fpg": "./index.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "LGPL-2.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@entando/log": "^1.0.2",
     "chalk": "^2.4.2",
