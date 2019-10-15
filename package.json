@@ -1,10 +1,7 @@
 {
   "name": "@entando/fpg",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "entando frontend app generator",
-  "files": [
-    "index.js"
-  ],
   "bin": {
     "entando-fpg": "./index.js"
   },

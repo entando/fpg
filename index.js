@@ -10,8 +10,9 @@ const packageGenerator = require('./modules/package-generator');
 const boilerplateGenerator = require('./modules/boilerplate-generator');
 const replaceMapper = require('./modules/replace-mapper');
 const { execSync } = require('child_process');
+const version = require('./package.json').version;
 
-program.version('1.0.0').name('@entando/fpg');
+program.version(version).name('@entando/fpg');
 
 program
   .command('ab-app')
