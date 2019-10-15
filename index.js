@@ -3,9 +3,9 @@
 'use strict';
 
 const program = require('commander');
-const fs = require('fs');
 const Log = require('@entando/log');
 const nameResolver = require('./modules/name-resolver');
+const directoryGenerator = require('./modules/directory-generator');
 const packageGenerator = require('./modules/package-generator');
 const boilerplateGenerator = require('./modules/boilerplate-generator');
 const replaceMapper = require('./modules/replace-mapper');
@@ -22,20 +22,10 @@ program
     Log.title('app-builder app generator').section('create app structure');
     const appDirName = nameResolver.getDirName(app);
     const appName = nameResolver.getAppName(app);
-    if (fs.existsSync(appDirName)) {
-      Log.error(`the directory '${appDirName}' for the '${app}' app already exists`).empty();
-      process.exit();
-    }
-
-    Log.info(`create directory './${appDirName}'`)
-    fs.mkdirSync(appDirName);
-    Log.success('directory created').empty();
-
     const boilerplateDir = `${__dirname}/boilerplates/app-builder-app`;
 
-    Log.info('creating package file');
+    directoryGenerator(appDirName, appName);
     packageGenerator(app, appDirName, boilerplateDir);
-    Log.success('package.json created').empty();
 
     boilerplateGenerator(appDirName, boilerplateDir);
     replaceMapper(appDirName, appName, boilerplateDir);

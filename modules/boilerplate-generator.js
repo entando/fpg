@@ -13,7 +13,8 @@ const boilerplateGenerator = (dirName, boilerplateDir) => {
   Log.info('copying configuration files');
   fs.copySync(`${boilerplateDir}/.env`, `${dirName}/.env`);
   fs.copySync(`${boilerplateDir}/.sass-lint.yml`, `${dirName}/.sass-lint.yml`);
-  Log.success('`.env` and `.sass-lint.yml files copied`').empty();
+  fs.copySync(`${boilerplateDir}/jsconfig.json`, `${dirName}/jsconfig.json`);
+  Log.success('`.env`, `jsconfig.json` and `.sass-lint.yml` files copied').empty();
 
   Log.info('copying public dir');
   fs.copySync(`${boilerplateDir}/public`, `${dirName}/public`);
