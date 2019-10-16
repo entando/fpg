@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Log = require('@entando/log');
 
-const replaceMapper = (dirName, appName, boilerplateDir) => {
+const replacePlaceholders = (dirName, appName, boilerplateDir) => {
   const mapping = require(`${boilerplateDir}/replace-mapping`);
   Log.section('replacing placeholders')
   mapping.forEach((file) => {
@@ -10,9 +10,9 @@ const replaceMapper = (dirName, appName, boilerplateDir) => {
       .replace(/UCASE_APP_NAME/g, appName.toUpperCase())
       .replace(/APP_NAME/g, appName);
     fs.writeFileSync(`${dirName}/${file}`, content);
-    Log.info(`replaced ${file}`);
+    Log.info(`replaced \`${file}\``);
   });
   Log.success('replaced all placeholders');
 };
 
-module.exports = replaceMapper;
+module.exports = replacePlaceholders;

@@ -1,14 +1,14 @@
 const fs = require('fs-extra');
 const Log = require('@entando/log');
 
-const boilerplateGenerator = (dirName, boilerplateDir) => {
+const createBoilerplate = (dirName, boilerplateDir, additionalPaths = []) => {
   Log.info('creating README');
   fs.copySync(`${boilerplateDir}/README.md`, `${dirName}/README.md`);
-  Log.success('README.md created').empty();
+  Log.success('`README.md` created').empty();
 
   Log.info('creating gitignore file');
   fs.copySync(`${boilerplateDir}/gitignore`, `${dirName}/.gitignore`);
-  Log.success('.gitignore created').empty();
+  Log.success('`.gitignore` created').empty();
 
   Log.info('copying configuration files');
   fs.copySync(`${boilerplateDir}/.env`, `${dirName}/.env`);
@@ -23,6 +23,12 @@ const boilerplateGenerator = (dirName, boilerplateDir) => {
   Log.info('copying src dir');
   fs.copySync(`${boilerplateDir}/src`, `${dirName}/src`);
   Log.success('`src` directory and files copied`').empty();
+
+  additionalPaths.forEach((path) => {
+    Log.info(`copying ${path}`);
+    fs.copySync(`${boilerplateDir}/${path}`, `${dirName}/${path}`);
+    Log.success(`\`${path}\` copied.`).empty();
+  })
 };
 
-module.exports = boilerplateGenerator;
+module.exports = createBoilerplate;
