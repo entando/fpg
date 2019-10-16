@@ -6,7 +6,10 @@ This project contains the `App Builder` screens for the APP_NAME app of Entando.
 
 # Developer Prerequesites
 
-It is recommended to install `npm-install-peers` (`npm i -g npm-install-peers`) to install peer dependencies. So when you install npm dependencies, you can only install at one command: `npm i && npm-install-peers` - this will download all your dependencies specified in `package.json` including the `peerDependencies`. This is to enable standalone mode during development phases. Take note that whenever you install a new npm module, this will erase all the peer dependencies, so you have to re-run `npm-install-peers` after installing.
+It is recommended to use `npm-install-peers` to install peer dependencies.
+This can be done by either installing the package in your globals (`npm i -g npm-install-peers`) or using npx (`npx npm-install-peers`).
+
+Take note that whenever you install a new npm module, this will erase all the peer dependencies, so you have to re-run `npm-install-peers` after installing.
 
 # Configuration example
 
@@ -21,7 +24,7 @@ REACT_APP_CLIENT_SECRET=appbuilder_secret
 
 # Integration with app-builder
 
-Check the `app-builder` README.
+Check the [`app-builder` README](https://github.com/entando/app-builder/blob/master/Apps.md).
 
 ---
 

@@ -5,7 +5,7 @@ const createPackage = (app, dirName, boilerplateDir) => {
   Log.info('creating package file');
   const fileContent = fs.readJsonSync(`${boilerplateDir}/package`);
   fileContent.name = app;
-  fileContent.description = `${app} CMS app`;
+  fileContent.description = fileContent.description.replace('APP_NAME', app);
   fs.writeJsonSync(`${dirName}/package.json`, fileContent, { spaces: 2 });
   Log.success('package.json created').empty();
 };
